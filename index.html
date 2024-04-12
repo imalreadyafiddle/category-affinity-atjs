@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Grid Example</title>
+    <script
+      src="https://assets.adobedtm.com/409c9b2973cc/191501909590/launch-c23c99ccf76b.min.js"
+      async
+    ></script>
+    <style>
+      .button {
+        height: 3rem;
+        margin: 5px;
+        background-color: #ccc;
+        border: none;
+        cursor: pointer;
+        border-radius: 15px;
+        font-size: 2rem;
+      }
+      .button:hover {
+        background-color: #bbb;
+      }
+      .button:active {
+        background-color: #444;
+      }
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 10px;
+        padding: 10px;
+      }
+      h1,
+      .rank-order-holder {
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>PLEASE LOVE THE PRODUCTS</h1>
+    <div class="grid">
+      <button
+        class="button"
+        data-button-id="0"
+        onclick="handleButtonClick('apples')"
+      >
+        &#127822;
+      </button>
+      <button
+        class="button"
+        data-button-id="1"
+        onclick="handleButtonClick('bananas')"
+      >
+        &#127820;
+      </button>
+      <button
+        class="button"
+        data-button-id="2"
+        onclick="handleButtonClick('carrots')"
+      >
+        &#129365;
+      </button>
+      <button
+        class="button"
+        data-button-id="3"
+        onclick="handleButtonClick('donuts')"
+      >
+        &#127849;
+      </button>
+      <button
+        class="button"
+        data-button-id="4"
+        onclick="handleButtonClick('eggs')"
+      >
+        &#129370;
+      </button>
+      <button
+        class="button"
+        data-button-id="5"
+        onclick="handleButtonClick('fries')"
+      >
+        &#127839;
+      </button>
+      <button
+        class="button"
+        data-button-id="6"
+        onclick="handleButtonClick('grapes')"
+      >
+        &#127815;
+      </button>
+      <button
+        class="button"
+        data-button-id="7"
+        onclick="handleButtonClick('hot dogs')"
+      >
+        &#127789;
+      </button>
+      <button
+        class="button"
+        data-button-id="8"
+        onclick="handleButtonClick('ice cream')"
+      >
+        &#127846;
+      </button>
+      <button
+        class="button"
+        data-button-id="9"
+        onclick="handleButtonClick('juice')"
+      >
+        &#129475;
+      </button>
+    </div>
+    <div class="rank-order-holder"></div>
+
+    <script>
+      function handleButtonClick(food) {
+        // Handle button click event here
+        console.log(food + " button was clicked.");
+        adobe.target.getOffer({
+          mbox: "target-global-mbox",
+          params: {
+            "user.categoryId": food,
+          },
+          success: function (offer) {
+            adobe.target.applyOffer({
+              mbox: "target-global-mbox",
+              offer: offer,
+            });
+          },
+          error: function (status, error) {
+            console.log("Error", status, error);
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
