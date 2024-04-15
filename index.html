@@ -4,48 +4,51 @@
     <title>Category Affinity Demo</title>
     <script>
       window.targetGlobalSettings = {
-    cookieDomain: "imalreadyafiddle.github.io",
-    secureOnly: true
-}
-      ;(function(win, doc, style, timeout) {
-  var STYLE_ID = 'at-body-style';
+        cookieDomain: "imalreadyafiddle.github.io",
+        secureOnly: true,
+      };
+      (function (win, doc, style, timeout) {
+        var STYLE_ID = "at-body-style";
 
-  function getParent() {
-    return doc.getElementsByTagName('head')[0];
-  }
+        function getParent() {
+          return doc.getElementsByTagName("head")[0];
+        }
 
-  function addStyle(parent, id, def) {
-    if (!parent) {
-      return;
-    }
+        function addStyle(parent, id, def) {
+          if (!parent) {
+            return;
+          }
 
-    var style = doc.createElement('style');
-    style.id = id;
-    style.innerHTML = def;
-    parent.appendChild(style);
-  }
+          var style = doc.createElement("style");
+          style.id = id;
+          style.innerHTML = def;
+          parent.appendChild(style);
+        }
 
-  function removeStyle(parent, id) {
-    if (!parent) {
-      return;
-    }
+        function removeStyle(parent, id) {
+          if (!parent) {
+            return;
+          }
 
-    var style = doc.getElementById(id);
+          var style = doc.getElementById(id);
 
-    if (!style) {
-      return;
-    }
+          if (!style) {
+            return;
+          }
 
-    parent.removeChild(style);
-  }
+          parent.removeChild(style);
+        }
 
-  addStyle(getParent(), STYLE_ID, style);
-  setTimeout(function() {
-    removeStyle(getParent(), STYLE_ID);
-  }, timeout);
-}(window, document, "body {opacity: 0 !important}", 750));
+        addStyle(getParent(), STYLE_ID, style);
+        setTimeout(function () {
+          removeStyle(getParent(), STYLE_ID);
+        }, timeout);
+      })(window, document, "body {opacity: 0 !important}", 750);
     </script>
-<script src="https://assets.adobedtm.com/409c9b2973cc/96bbc6f5da33/launch-85c17829cd30.min.js" async></script>
+    <script
+      src="https://assets.adobedtm.com/409c9b2973cc/96bbc6f5da33/launch-85c17829cd30.min.js"
+      async
+    ></script>
     <style>
       .button {
         height: 3rem;
@@ -78,17 +81,24 @@
         text-align: center;
         font-family: Arial, Helvetica, sans-serif;
       }
-      .catfinity-info {
+      .catfinity-info,
+      .rank-order {
         list-style-position: inside;
       }
-      li:first-of-type{
-        margin-top:15px;
+      .rank-order-list {
+        display: inline-block;
+        text-align: left;}
+      .rank-order-holder {
+        text-align: center;
+      }
+      li:first-of-type {
+        margin-top: 15px;
       }
       li {
         margin-bottom: 5px;
       }
-      hr{
-        margin-top:15px;
+      hr {
+        margin-top: 15px;
       }
     </style>
   </head>
@@ -166,15 +176,37 @@
         &#129475;
       </button>
     </div>
-    <div class="rank-order-holder"></div>
-    <hr>
-    <ol class="catfinity-info">How to see what's going on behind the scenes:
-    <li>Open Developer Console (F12 or right-click on the page -> select "Inspect")</li>
-    <li>Select "Network" Tab</li>
-    <li>Check "Preserve Log" box - this will keep the log from clearing between page loads</li>
-    <li>Filter network requests by "delivery" - Target calls will be made through at.js to the Delivery API endpoint at page load and as buttons are clicked</li>
-    <li>Click on a Target call, it will have its own tabs to sort through; "Payload" shows the request made to Target, "Preview" shows the response <br> from Target — these items can be expanded using the triangle drop-downs in the request/response bodies</li>
-    <li>Category info is sent to Target in requests made when a button is clicked, a dynamic offer containing rank order <br> affinities associated with the pseudononymous Target Visitor Profile is returned by Target in the response</li>
+    <div class="rank-order-holder">
+    </div>
+    <hr />
+    <ol class="catfinity-info">
+      How to see what's going on behind the scenes:
+      <li>
+        Open Developer Console (F12 or right-click on the page -> select
+        "Inspect")
+      </li>
+      <li>Select "Network" Tab</li>
+      <li>
+        Check "Preserve Log" box - this will keep the log from clearing between
+        page loads
+      </li>
+      <li>
+        Filter network requests by "delivery" - Target calls will be made
+        through at.js to the Delivery API endpoint at page load and as buttons
+        are clicked
+      </li>
+      <li>
+        Click on a Target call, it will have its own tabs to sort through;
+        "Payload" shows the request made to Target, "Preview" shows the response
+        from Target — these items can be expanded using the triangle drop-downs
+        in the request/response bodies
+      </li>
+      <li>
+        Category info is sent to Target in requests made when a button is
+        clicked, a dynamic offer containing rank order affinities associated
+        with the pseudononymous Target Visitor Profile is returned by Target in
+        the response
+      </li>
     </ol>
 
     <script>
